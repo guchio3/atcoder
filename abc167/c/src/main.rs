@@ -1,3 +1,5 @@
+// use std::cmp::max;
+use std::cmp::min;
 use std::io::stdin;
 use std::str::FromStr;
 
@@ -30,6 +32,52 @@ where
     s.trim().parse().unwrap()
 }
 
+fn dfs(sum_money: usize, x: usize, in_vecs: &Vec<Vec<usize>>, best: i64, mut temp_sums: &mut Vec<usize>, index: usize, use_i: usize) -> i64 {
+    if index == in_vecs.len() {
+        for &temp_sum in temp_sums.iter() {
+            if temp_sum < x {
+                return 1_000_000_000_000;
+            }
+        }
+        return sum_money as i64;
+    }
+    if use_i == 0 {
+        let best = min(best, dfs(sum_money, x, &in_vecs, best, &mut temp_sums, index+1, 0));
+        return min(best, dfs(sum_money, x, &in_vecs, best, &mut temp_sums, index+1, 1));
+    } else {
+        let temp_sum_base = &in_vecs[index];
+        for i in 1..temp_sum_base.len() {
+             temp_sums[i-1] += temp_sum_base[i];
+        }
+
+        let best = min(best, dfs(sum_money+temp_sum_base[0], x, &in_vecs, best, &mut temp_sums, index+1, 0));
+        let best = min(best, dfs(sum_money+temp_sum_base[0], x, &in_vecs, best, &mut temp_sums, index+1, 1));
+
+        for i in 1..temp_sum_base.len() {
+             temp_sums[i-1] -= temp_sum_base[i];
+        }
+        return best;
+    }
+}
+
 fn main() {
-    let n: usize = read_line()[0];
+    let in_vec: Vec<usize> = read_line();
+    let n = in_vec[0];
+    let m = in_vec[1];
+    let x = in_vec[2];
+
+    let mut in_vecs: Vec<Vec<usize>> = Vec::new();
+    for _i in 0..n {
+        in_vecs.push(read_line());
+    }
+
+    let mut temp_sums: Vec<usize> = vec![0; m];
+    let res = dfs(0, x, &in_vecs, 1_000_000_000_000, &mut temp_sums, 0, 0);
+    let res = min(res, dfs(0, x, &in_vecs, 1_000_000_000_000, &mut temp_sums, 0, 1));
+    
+    if res == 1_000_000_000_000 {
+        println!("{}", -1);
+        return;
+    }
+    println!("{}", res);
 }

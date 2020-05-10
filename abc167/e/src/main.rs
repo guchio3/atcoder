@@ -31,5 +31,5 @@ where
 }
 
 fn main() {
-    let n: usize = read_line()[0];
+    let in_vec: Vec<usize> = read_line();
 }

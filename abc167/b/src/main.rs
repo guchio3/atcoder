@@ -34,13 +34,14 @@ fn main() {
     let in_vec: Vec<i64> = read_line();
     let a = in_vec[0];
     let b = in_vec[1];
-    let c = in_vec[2];
+    let _c = in_vec[2];
     let k = in_vec[3];
 
-    let res: usize;
-    if a <= k {
+    let res: i64;
+
+    if k <= a {
         res = k;
-    } else if a + b <= k {
+    } else if k <= a + b {
         res = a;
     } else {
         res = a - (k - a - b);
