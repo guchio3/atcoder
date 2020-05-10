@@ -31,5 +31,15 @@ where
 }
 
 fn main() {
-    let n: usize = read_line()[0];
+    let s = read_str_as_char_vec();
+    let t = read_str_as_char_vec();
+
+    for i in 0..s.len() {
+        if s[i] != t[i] {
+            println!("No");
+            return;
+        }
+    }
+
+    println!("Yes");
 }
