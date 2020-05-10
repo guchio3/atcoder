@@ -31,5 +31,20 @@ where
 }
 
 fn main() {
-    let n: usize = read_line()[0];
+    let in_vec: Vec<i64> = read_line();
+    let a = in_vec[0];
+    let b = in_vec[1];
+    let c = in_vec[2];
+    let k = in_vec[3];
+
+    let res: usize;
+    if a <= k {
+        res = k;
+    } else if a + b <= k {
+        res = a;
+    } else {
+        res = a - (k - a - b);
+    }
+
+    println!("{}", res);
 }
