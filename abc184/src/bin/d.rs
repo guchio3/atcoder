@@ -9,11 +9,19 @@ fn main() {
         a: usize, b: usize, c: usize
     }
 
-    let mut dp = vec![vec![vec![0; 101]; 101]; 101];
+    let mut dp = vec![vec![vec![0.; 101]; 101]; 101];
     for i in (0..100).into_iter().rev() {
         for j in (0..100).into_iter().rev() {
             for k in (0..100).into_iter().rev() {
-                dp[i][j][k] = dp[][][];
+                if i == 0 && j == 0 && k == 0 {
+                    continue;
+                }
+                dp[i][j][k] +=
+                    (i as f64 / (i as f64 + j as f64 + k as f64)) * (dp[i + 1][j][k] + 1.);
+                dp[i][j][k] +=
+                    (j as f64 / (i as f64 + j as f64 + k as f64)) * (dp[i][j + 1][k] + 1.);
+                dp[i][j][k] +=
+                    (k as f64 / (i as f64 + j as f64 + k as f64)) * (dp[i][j][k + 1] + 1.);
             }
         }
     }
