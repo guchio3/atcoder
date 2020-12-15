@@ -1,4 +1,5 @@
 use num::traits::{NumAssign, PrimInt};
+use std::fmt::Debug;
 
 struct LazySegTree<T> {
     n: usize,
@@ -8,7 +9,7 @@ struct LazySegTree<T> {
 
 impl<T> LazySegTree<T>
 where
-    T: PrimInt + NumAssign,
+    T: PrimInt + NumAssign + Debug,
 {
     fn new(n: usize) -> LazySegTree<T> {
         let nn = 2usize.pow((n as f64).log2() as u32 + 1);
