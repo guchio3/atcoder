@@ -10,11 +10,18 @@ use std::fmt::Debug;
 
 fn main() {
     input! {
-        n: usize, m: usize
+        n: usize,
+        k: usize,
+        x: [usize; n]
     }
-    if n * 2 >= m {
-        println!("{}", m / 2);
-    } else {
-        println!("{}",  n + (m - 2 * n) / 4);
+    let mut res = 0;
+    for i in 0..n {
+        let x_i = x[i];
+        if (k - x_i) > x_i {
+            res += 2 * x_i;
+        } else {
+            res += 2 * (k - x_i);
+        }
     }
+    println!("{}", res);
 }

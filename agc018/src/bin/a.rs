@@ -10,11 +10,10 @@ use std::fmt::Debug;
 
 fn main() {
     input! {
-        n: usize, m: usize
+        n: usize, k: i64,
+        a: [i64; n]
     }
-    if n * 2 >= m {
-        println!("{}", m / 2);
-    } else {
-        println!("{}",  n + (m - 2 * n) / 4);
-    }
+
+    println!("POSSIBLE");
+    println!("IMPOSSIBLE");
 }

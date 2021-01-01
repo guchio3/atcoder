@@ -10,11 +10,14 @@ use std::fmt::Debug;
 
 fn main() {
     input! {
-        n: usize, m: usize
+        mut a: String, b: String
     }
-    if n * 2 >= m {
-        println!("{}", m / 2);
+    a.push_str(&b);
+    let num = a.parse::<f64>().unwrap();
+    let root = num.powf(0.5);
+    if (num / root).ceil() as usize == root as usize {
+        println!("Yes");
     } else {
-        println!("{}",  n + (m - 2 * n) / 4);
+        println!("No");
     }
 }
