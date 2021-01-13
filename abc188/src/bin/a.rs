@@ -8,24 +8,13 @@ use std::cmp::{max, min};
 use std::collections::{BinaryHeap, HashMap, HashSet, VecDeque};
 use std::fmt::Debug;
 
-fn f(n: usize) -> usize {
-    if n % 2 == 0 {
-        n / 2
-    } else {
-        3 * n + 1
-    }
-}
-
 fn main() {
     input! {
-        mut s: usize
+        x: usize, y: usize
     }
-    let mut m_map = vec![false; 1000000];
-    let mut res = 1;
-    while !m_map[s] {
-        m_map[s] = true;
-        s = f(s);
-        res += 1;
+    if max(x, y) < min(x, y) + 3 {
+        println!("Yes");
+    } else {
+        println!("No");
     }
-    println!("{}", res);
 }

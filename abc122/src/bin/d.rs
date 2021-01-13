@@ -9,15 +9,5 @@ use std::collections::{BinaryHeap, HashMap, HashSet, VecDeque};
 use std::fmt::Debug;
 
 fn main() {
-    input! {
-        n: usize,
-        mut v: [usize; n]
-    }
-    v.sort();
-    let mut res = v[0] as f64;
-    for i in 1..v.len() {
-        let v_i = v[i];
-        res = (res + v_i as f64) / 2.;
-    }
-    println!("{}", res);
+    input! {}
 }
