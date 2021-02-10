@@ -10,21 +10,14 @@ use std::fmt::Debug;
 
 fn main() {
     input! {
-        n: usize, _m: usize,
-    }
-    let mut liked = HashMap::new();
-    for _i in 0..n {
-        input! {
-            k: usize,
-            a: [usize; k]
-        }
-        for a_i in a {
-            *liked.entry(a_i).or_insert(0) += 1;
-        }
+        n: usize,
+        p: [usize; n]
     }
     let mut res = 0;
-    for (_key, value) in liked {
-        if value == n {
+    let mut p_min = 99999999;
+    for p_i in p {
+        p_min = min(p_min, p_i);
+        if p_min >= p_i {
             res += 1;
         }
     }

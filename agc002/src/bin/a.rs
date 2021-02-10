@@ -10,18 +10,18 @@ use std::fmt::Debug;
 
 fn main() {
     input! {
-        n: usize,
-        a: [usize; n]
+        a: i64, b: i64
     }
-    let mut a_copy = a.clone();
-    a_copy.sort_by(|x, y| y.partial_cmp(&x).unwrap());
-    let largest = a_copy[0];
-    let second_largest = a_copy[1];
-    for a_i in a {
-        if a_i == largest {
-            println!("{}", second_largest);
+    let prod = a * b;
+    if prod <= 0 {
+        println!("Zero");
+    } else if a > 0 {
+        println!("Positive");
+    } else {
+        if (b - a) % 2 == 0 {
+            println!("Negative");
         } else {
-            println!("{}", largest);
+            println!("Positive");
         }
     }
 }

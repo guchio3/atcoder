@@ -10,22 +10,15 @@ use std::fmt::Debug;
 
 fn main() {
     input! {
-        n: usize, _m: usize,
+        n: usize,
+        mut ab: [(usize, usize); n]
     }
-    let mut liked = HashMap::new();
-    for _i in 0..n {
-        input! {
-            k: usize,
-            a: [usize; k]
-        }
-        for a_i in a {
-            *liked.entry(a_i).or_insert(0) += 1;
-        }
-    }
+    ab = ab.into_iter().rev().collect();
     let mut res = 0;
-    for (_key, value) in liked {
-        if value == n {
-            res += 1;
+    for (mut a_i, b_i) in ab {
+        a_i += res;
+        if a_i % b_i != 0 {
+            res += b_i - (a_i % b_i);
         }
     }
     println!("{}", res);

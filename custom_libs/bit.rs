@@ -1,4 +1,4 @@
-/// 1 start なことに気をつける
+/// 1 start であることに注意
 struct BIT {
     n: usize,
     nodes: Vec<i64>,
