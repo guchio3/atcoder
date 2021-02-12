@@ -10,15 +10,16 @@ use std::fmt::Debug;
 
 fn main() {
     input! {
-        a: usize, b: usize, c: usize
+        n: usize,
+        t: [usize; n]
     }
-    if c < a + b {
-        println!("No");
+    if n == 1 {
+        println!("{}", t[0]);
     } else {
-        if 4 * a * b < (c - a - b).pow(2) {
-            println! {"Yes"};
-        } else {
-            println!("No");
+        let mut res = lcm(t[0], t[1]);
+        for i in 2..n {
+            res = lcm(res, t[i]);
         }
+        println!("{}", res);
     }
 }

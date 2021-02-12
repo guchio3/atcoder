@@ -10,15 +10,17 @@ use std::fmt::Debug;
 
 fn main() {
     input! {
-        a: usize, b: usize, c: usize
+        w: Chars
     }
-    if c < a + b {
-        println!("No");
-    } else {
-        if 4 * a * b < (c - a - b).pow(2) {
-            println! {"Yes"};
-        } else {
+    let mut cnt = HashMap::new();
+    for w_i in w {
+        *cnt.entry(w_i).or_insert(0) += 1;
+    }
+    for (_key, value) in cnt {
+        if value % 2 != 0 {
             println!("No");
+            return;
         }
     }
+    println!("Yes");
 }

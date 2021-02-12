@@ -9,16 +9,5 @@ use std::collections::{BinaryHeap, HashMap, HashSet, VecDeque};
 use std::fmt::Debug;
 
 fn main() {
-    input! {
-        a: usize, b: usize, c: usize
-    }
-    if c < a + b {
-        println!("No");
-    } else {
-        if 4 * a * b < (c - a - b).pow(2) {
-            println! {"Yes"};
-        } else {
-            println!("No");
-        }
-    }
+    input! {}
 }
