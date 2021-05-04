@@ -9,5 +9,14 @@ use std::collections::{BinaryHeap, HashMap, HashSet, VecDeque};
 use std::fmt::Debug;
 
 fn main() {
-    input! {}
+    input! {
+        w: usize, a: usize, b: usize
+    }
+    let left = min(a, b);
+    let right = max(a, b);
+    if left + w < right {
+        println!("{}", right - left - w);
+    } else {
+        println!("0");
+    }
 }

@@ -9,5 +9,8 @@ use std::collections::{BinaryHeap, HashMap, HashSet, VecDeque};
 use std::fmt::Debug;
 
 fn main() {
-    input! {}
+    input! {
+        h: usize, a: usize
+    }
+    println!("{}", h / a + (h % a != 0) as usize);
 }

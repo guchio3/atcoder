@@ -9,5 +9,12 @@ use std::collections::{BinaryHeap, HashMap, HashSet, VecDeque};
 use std::fmt::Debug;
 
 fn main() {
-    input! {}
+    input! {
+        n: usize, m: usize
+    }
+    if n == m {
+        println!("Yes");
+    } else {
+        println!("No");
+    }
 }

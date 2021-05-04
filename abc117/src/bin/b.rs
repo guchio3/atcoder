@@ -9,5 +9,18 @@ use std::collections::{BinaryHeap, HashMap, HashSet, VecDeque};
 use std::fmt::Debug;
 
 fn main() {
-    input! {}
+    input! {
+        n: usize,
+        mut l: [usize; n]
+    }
+    l.sort();
+    let mut all_sum = 0;
+    for i in 0..n - 1 {
+        all_sum += l[i];
+    }
+    if l[n - 1] < all_sum {
+        println!("Yes");
+    } else {
+        println!("No");
+    }
 }

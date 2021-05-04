@@ -9,5 +9,12 @@ use std::collections::{BinaryHeap, HashMap, HashSet, VecDeque};
 use std::fmt::Debug;
 
 fn main() {
-    input! {}
+    input! {
+        n: usize, r: usize
+    }
+    if n >= 10 {
+        println!("{}", r);
+    } else {
+        println!("{}", r + 100 * (10 - n));
+    }
 }

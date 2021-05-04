@@ -13,7 +13,15 @@ fn main() {
         n: usize, k: i64,
         a: [i64; n]
     }
-
-    println!("POSSIBLE");
-    println!("IMPOSSIBLE");
+    let mut max_num = a[0];
+    let mut gcd_num = a[0];
+    for i in 1..n {
+        gcd_num = gcd(gcd_num, a[i]);
+        max_num = max(max_num, a[i]);
+    }
+    if k <= max_num && k % gcd_num == 0 {
+        println!("POSSIBLE");
+    } else {
+        println!("IMPOSSIBLE");
+    }
 }

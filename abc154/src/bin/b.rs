@@ -6,5 +6,9 @@ use std::cmp::{max, min};
 use std::collections::{HashMap, HashSet, VecDeque};
 
 fn main() {
-    input! {}
+    input! {
+        s: Chars
+    }
+    let res = vec!['x'; s.len()];
+    println!("{}", res.into_iter().join(""));
 }

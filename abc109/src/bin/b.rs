@@ -9,5 +9,19 @@ use std::collections::{BinaryHeap, HashMap, HashSet, VecDeque};
 use std::fmt::Debug;
 
 fn main() {
-    input! {}
+    input! {
+        n: usize,
+        w: [Chars; n]
+    }
+    let mut occurred = HashSet::new();
+    let mut bef_end = w[0][0];
+    for w_i in w {
+        if occurred.contains(&w_i) || bef_end != w_i[0] {
+            println!("No");
+            return;
+        }
+        bef_end = w_i[w_i.len() - 1];
+        occurred.insert(w_i);
+    }
+    println!("Yes");
 }
